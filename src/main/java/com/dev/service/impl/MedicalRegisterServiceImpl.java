@@ -63,4 +63,19 @@ public class MedicalRegisterServiceImpl implements MedicalRegisterService {
         return this.medicalRegisterRepository.getMedicalRegisters();
     }
 
+        @Override
+        public List<MedicalRegister> countMedicalRegistersByMonth(int month) {
+                return this.medicalRegisterRepository.countMedicalRegistersByMonth(month);
+        }
+
+        @Override
+        public List<MedicalRegister> countMedicalRegistersByQuarter(int quarter) {
+                return this.medicalRegisterRepository.countMedicalRegistersByQuarter(quarter);
+        }
+
+        @Override
+        public List<MedicalRegister> countMedicalRegistersByYear(int year) {
+                return this.medicalRegisterRepository.countMedicalRegistersByYear(year);
+        }
+
 }

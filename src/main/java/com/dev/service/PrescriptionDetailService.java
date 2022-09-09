@@ -24,4 +24,10 @@ public interface PrescriptionDetailService {
         boolean deletePrescriptionDetail(int id);
         
         void updatePrescriptionDetail(PrescriptionDetail pd, int prescriptionDetailId);
+        
+        List<PrescriptionDetail> countMedicineByMonth(int month);
+
+        List<PrescriptionDetail> countMedicineByQuarter(int quarter);
+
+        List<PrescriptionDetail> countMedicineByYear(int year);
 }
