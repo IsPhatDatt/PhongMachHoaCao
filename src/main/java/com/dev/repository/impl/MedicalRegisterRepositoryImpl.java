@@ -157,14 +157,48 @@ public class MedicalRegisterRepositoryImpl implements MedicalRegisterRepository 
         }
 
         @Override
-    public List<MedicalRegister> getMedicalRegisters() {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery query = builder.createQuery(MedicalRegister.class);
-        Root root = query.from(MedicalRegister.class);
-        Query q = session.createQuery(query);
+        public List<MedicalRegister> getMedicalRegisters() {
+                Session session = this.sessionFactory.getObject().getCurrentSession();
+                CriteriaBuilder builder = session.getCriteriaBuilder();
+                CriteriaQuery query = builder.createQuery(MedicalRegister.class);
+                Root root = query.from(MedicalRegister.class);
+                Query q = session.createQuery(query);
 
-        return q.getResultList();
+                return q.getResultList();
 
-    }
+        }
+
+        @Override
+        public List<MedicalRegister> countMedicalRegistersByMonth(int month) {
+                Session session = this.sessionFactory.getObject().getCurrentSession();
+                System.out.println("===============year repository" + month);
+
+                Query query = session.createQuery("SELECT COUNT(*) FROM MedicalRegister m WHERE month(m.dateOfExamination)=: month");
+                query.setParameter("month", month);
+
+                return query.getResultList();
+        }
+
+        @Override
+        public List<MedicalRegister> countMedicalRegistersByQuarter(int quarter) {
+                Session session = this.sessionFactory.getObject().getCurrentSession();
+                System.out.println("===============year repository" + quarter);
+
+                Query query = session.createQuery("SELECT COUNT(*) FROM MedicalRegister m WHERE quarter(m.dateOfExamination)=: quarter");
+                query.setParameter("quarter", quarter);
+
+                return   query.getResultList();
+        }
+
+        @Override
+        public List<MedicalRegister> countMedicalRegistersByYear(int year) {
+                Session session = this.sessionFactory.getObject().getCurrentSession();
+                System.out.println("===============year repository" + year);
+
+                Query query = session.createQuery("SELECT COUNT(*) FROM MedicalRegister m WHERE year(m.dateOfExamination)=: year");
+                query.setParameter("year", year);
+
+                return query.getResultList();
+        }
+
 }

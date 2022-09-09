@@ -12,16 +12,23 @@ import java.util.List;
  * @author Thanh_Tam
  */
 public interface PrescriptionDetailRepository {
-        
+
         PrescriptionDetail getPrescriptionDetailById(int prescriptionDetailID);
-        
+
         PrescriptionDetail alterPrescriptionDetail(int prescriptionDetailID, String quantity);
-        
+
         List<PrescriptionDetail> getPrescriptionDetails(int prescriptionID);
-        
+
         boolean addPrescriptionDetail(PrescriptionDetail pd);
-        
+
         boolean deletePrescriptionDetail(int id);
-        
+
         void updatePrescriptionDetail(PrescriptionDetail pd, int prescriptionDetailId);
+
+        List<PrescriptionDetail> countMedicineByMonth(int month);
+
+        List<PrescriptionDetail> countMedicineByQuarter(int quarter);
+
+        List<PrescriptionDetail> countMedicineByYear(int year);
+
 }
