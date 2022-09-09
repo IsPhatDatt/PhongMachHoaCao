@@ -136,4 +136,25 @@ public class PrescriptionDetailRepositoryImpl implements PrescriptionDetailRepos
         }
     }
 
+        @Override
+        public List<PrescriptionDetail> countMedicineByMonth(int month) {
+                Session session = this.sessionFactory.getObject().getCurrentSession();
+                System.out.println("===============month repository" + month);
+
+                Query query = session.createQuery("SELECT * FROM PrescriptionDetail d JOIN Prescription p On d.prescriptionId = p.id");
+//                query.setParameter("month", month);
+
+                return query.getResultList();
+        }
+
+        @Override
+        public List<PrescriptionDetail> countMedicineByQuarter(int quarter) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public List<PrescriptionDetail> countMedicineByYear(int year) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
 }

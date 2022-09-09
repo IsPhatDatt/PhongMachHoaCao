@@ -51,4 +51,19 @@ public class PrescriptionDetailServiceImpl implements PrescriptionDetailService 
         this.prescriptionDetailRepository.updatePrescriptionDetail(pd, prescriptionDetailId);
     }
 
+        @Override
+        public List<PrescriptionDetail> countMedicineByMonth(int month) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public List<PrescriptionDetail> countMedicineByQuarter(int quarter) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public List<PrescriptionDetail> countMedicineByYear(int year) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
 }
