@@ -112,6 +112,10 @@ public class User implements Serializable {
         private UserRole userRoleId;
         
         @JsonIgnore
+        @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
+        private Set<Receipt> receiptSet;
+        
+        @JsonIgnore
         @Transient
         private String confirmPassword;
         
@@ -332,6 +336,20 @@ public class User implements Serializable {
      */
     public void setDateString(String dateString) {
         this.dateString = dateString;
+    }
+
+    /**
+     * @return the receiptSet
+     */
+    public Set<Receipt> getReceiptSet() {
+        return receiptSet;
+    }
+
+    /**
+     * @param receiptSet the receiptSet to set
+     */
+    public void setReceiptSet(Set<Receipt> receiptSet) {
+        this.receiptSet = receiptSet;
     }
 
 }
