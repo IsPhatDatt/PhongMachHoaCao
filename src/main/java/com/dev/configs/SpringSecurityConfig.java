@@ -50,13 +50,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         .passwordParameter("password");
 
                 http.formLogin().defaultSuccessUrl("/").failureUrl("/login?error");
-                
+
                 http.exceptionHandling().accessDeniedPage("/login?accessDenied"); //Khi no khong co quyen
-                
+
                 http.authorizeRequests().antMatchers("/").permitAll()
                         .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                        .antMatchers("/nurse/**").access("hasRole('ROLE_NURSE')");
-                
+                        .antMatchers("/admin/**").access("hasRole('ROLE_SUPERADMIN')")
+                        .antMatchers("/nurse/**").access("hasRole('ROLE_NURSE')")
+                        .antMatchers("/doctor/**").access("hasRole('ROLE_DOCTOR')")
+                        .antMatchers("/super-admin/**").access("hasRole('ROLE_SUPERADMIN')");
+
                 http.logout().logoutSuccessUrl("/login");
 
                 http.csrf().disable();  //Enable de tranh chen ma doc vao form
