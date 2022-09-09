@@ -4,7 +4,6 @@
  */
 package com.dev.controllers;
 import com.dev.service.MedicalRegisterService;
-import com.dev.service.PrescriptionDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,14 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @Transactional
 public class IndexController {
-        
-        @Autowired
-        private MedicalRegisterService m;
 
         @GetMapping("/")
         public String index(Model model) {
-                
-                System.out.println("===============count==========" + this.m.countMedicalRegistersByQuarter(4).get(0));
                 
                 return "index";
         }
