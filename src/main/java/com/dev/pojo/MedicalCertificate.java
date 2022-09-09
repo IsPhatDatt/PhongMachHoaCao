@@ -77,6 +77,10 @@ public class MedicalCertificate implements Serializable {
         @JsonIgnore
         @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicalCertificateId", fetch = FetchType.LAZY)
         private Set<Diagnostic> diagnosticSet;
+        
+        @JsonIgnore
+        @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicalCertificateId", fetch = FetchType.LAZY)
+        private Set<Receipt> receiptSet;
 
         public MedicalCertificate() {
         }
@@ -175,5 +179,19 @@ public class MedicalCertificate implements Serializable {
         public String toString() {
                 return "com.dev.pojo.MedicalCertificate[ id=" + id + " ]";
         }
+
+    /**
+     * @return the receiptSet
+     */
+    public Set<Receipt> getReceiptSet() {
+        return receiptSet;
+    }
+
+    /**
+     * @param receiptSet the receiptSet to set
+     */
+    public void setReceiptSet(Set<Receipt> receiptSet) {
+        this.receiptSet = receiptSet;
+    }
         
 }

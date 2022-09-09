@@ -179,6 +179,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         </definition>
         
         <!-- ===============end admin view================-->
+        
 
         <!-- ==============begin login view===============-->
         <definition name="login" extends="baseLayout">
@@ -205,4 +206,16 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
                 <put-attribute name="content"
                                value="/WEB-INF/jsp/medical-history.jsp" />
         </definition>
+        
+        <!-- ==============start supper admin view===============-->
+        <definition name="super-admin" extends="baseLayout">
+                <put-attribute name="title" value="Super admin page" />
+                <put-attribute name="header"
+                               value="/WEB-INF/layout/header.jsp" />
+                <put-attribute name="content"
+                               value="/WEB-INF/jsp/super-admin/home.jsp" />
+        </definition>
+        
+        
+        <!-- ==============end supper admin view===============-->
 </tiles-definitions>

@@ -19,3 +19,7 @@
 <sec:authorize access="hasRole('ROLE_DOCTOR')">
         <a href="<c:url value="/doctor" />" class="btn btn-info">Toi trang bác sĩ</a>
 </sec:authorize>
+<sec:authorize access="hasRole('ROLE_SUPERADMIN')">
+        <h1 class="text-center text-info">This is supper admin page</h1>
+        <a href="<c:url value="/super-admin" />" class="btn btn-info">Go to super admin page</a>
+</sec:authorize>

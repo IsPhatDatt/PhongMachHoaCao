@@ -68,6 +68,10 @@ public class Regulations implements Serializable {
         @JsonIgnore
         @OneToMany(cascade = CascadeType.ALL, mappedBy = "regulationId", fetch = FetchType.LAZY)
         private Set<MedicalCertificate> medicalCertificateSet;
+        
+        @JsonIgnore
+        @OneToMany(cascade = CascadeType.ALL, mappedBy = "regulationId", fetch = FetchType.LAZY)
+        private Set<Receipt> receiptSet;
 
         public Regulations() {
         }
@@ -149,5 +153,19 @@ public class Regulations implements Serializable {
         public String toString() {
                 return "com.dev.pojo.Regulations[ id=" + id + " ]";
         }
+
+    /**
+     * @return the receiptSet
+     */
+    public Set<Receipt> getReceiptSet() {
+        return receiptSet;
+    }
+
+    /**
+     * @param receiptSet the receiptSet to set
+     */
+    public void setReceiptSet(Set<Receipt> receiptSet) {
+        this.receiptSet = receiptSet;
+    }
         
 }
