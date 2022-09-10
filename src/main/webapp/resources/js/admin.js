@@ -3,6 +3,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 //User Api
+function updateUser(endpoint) {
+    event.preventDefault();
+    fetch(endpoint, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "symptom": document.getElementById("symptom").value,
+            "conclusion": document.getElementById("conclusion").value,
+            "medicalRegisterId": medicalRegisterMC.value,
+            "regulationId": regulationMC.value
+        })
+    }).then(function (res) {
+        if (res.ok) {
+            alert("update thành công!");
+            location.reload();
+        } else {
+            console.log("Update thất bại!");
+            alert("Update thất bại!");
+        }
+        return res;
+    }).then(
+            res => res.json()
+    ).then(
+            data => console.log(data)
+    ).catch(error => console.log(error))
+}
+
 function deleteUser(endpoint, id, btn) {
     let r = document.getElementById(`row${id}`);
     let l = document.getElementById(`load${id}`);
@@ -11,18 +40,21 @@ function deleteUser(endpoint, id, btn) {
     fetch(endpoint, {
         method: 'delete'
     }).then(function (res) {
-        if (res.status === 204) {
-            alert("Xóa thành công!!!");
-            l.style.display = "none";
-            r.style.display = "none";
-        }
         if (res.status === 405) {
             alert("Bạn không đủ quyền để xóa user này!!!");
             l.style.display = "none";
             btn.style.display = "block";
+        } else {
+            if (res.status !== 204) {
+                alert("Wrong!!");
+                l.style.display = "none";
+                btn.style.display = "block";
+            } else {
+                alert("Xóa thành công!!!");
+                l.style.display = "none";
+                r.style.display = "none";
+            }
         }
-        else if (res.status !== 204)
-            alert("Wrong!!!");
     }).catch(function (err) {
         console.error(err);
         btn.style.display = "block";
@@ -58,7 +90,7 @@ function getUsers(endpoint) {
                     <td>
                         <div class="spinner-border" style="display:none;" id="load${data[i].id}"></div>
                         <button class="btn btn-danger" onclick="deleteUser('${endpoint + "/" + data[i].id}', ${data[i].id}, this)">Xóa</button>
-                        <a href="/ClinicManagement/admin/medical-certificates/${data[i].id}">
+                        <a href="/ClinicManagement/admin/users/${data[i].id}">
                             <button class="btn btn-info">Sửa</button>
                         </a>
                     </td>

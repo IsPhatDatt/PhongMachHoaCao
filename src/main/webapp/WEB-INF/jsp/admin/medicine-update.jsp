@@ -33,7 +33,7 @@
         <input type="radio" name="active-medicine" value="${true}" ${medicine.active ? 'checked' : ''}/>Còn hạn
         <input type="radio" name="active-medicine" value="${false}" ${medicine.active ? '' : 'checked'}/>Hết hạn
     </div>
-        <div class="form-floating">
+    <div class="form-floating">
         <select class="form-select" id="unitMedicine" name="unit-medicine">
             <option hidden id="${medicine.unitId.id}" value="${medicine.unitId.id}">${medicine.unitId.unitName}</option>
             <c:forEach items="${units}" var="unit">

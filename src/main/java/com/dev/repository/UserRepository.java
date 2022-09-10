@@ -5,6 +5,7 @@
 package com.dev.repository;
 
 import com.dev.pojo.User;
+import com.dev.pojo.UserRole;
 import java.util.List;
 
 /**
@@ -22,4 +23,6 @@ public interface UserRepository {
         List<User> getUsersRoleDoctor(int userRoleID);
         
         boolean deleteUser(int id);
+        
+        void updateUser(User user, int id);
 }

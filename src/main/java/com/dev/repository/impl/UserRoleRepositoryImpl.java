@@ -49,13 +49,25 @@ public class UserRoleRepositoryImpl implements UserRoleRepository {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(UserRole.class);
         Root root = query.from(UserRole.class);
-        
-        
+
         query.where(builder.notLike(root.get("name").as(String.class), roleName));
 
         Query q = session.createQuery(query);
 
         return q.getResultList();
     }
+    
+    @Override
+    public List<UserRole> getUserRoles() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(UserRole.class);
+        Root root = query.from(UserRole.class);
 
+        query.select(root);
+
+        Query q = session.createQuery(query);
+
+        return q.getResultList();
+    }
 }

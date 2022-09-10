@@ -48,9 +48,9 @@ public class ApiUserController {
             User user = this.userService.getUsers(username).get(0);
 
             if (user != null) {
-                if(u.getUserRoleId().getId() != user.getUserRoleId().getId()){
+                if(u.getUserRoleId().getId() != user.getUserRoleId().getId() && u.getUserRoleId().getId() != 5){
                     this.userService.deleteUser(id);
-                    return new ResponseEntity<>(HttpStatus.OK);
+                    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
                 }
                 return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);  
                 

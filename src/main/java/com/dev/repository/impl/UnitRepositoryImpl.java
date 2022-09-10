@@ -1,4 +1,4 @@
-    /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -25,37 +25,37 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UnitRepositoryImpl implements UnitRepository {
 
-        @Autowired
-        private LocalSessionFactoryBean sessionFactory;
+    @Autowired
+    private LocalSessionFactoryBean sessionFactory;
 
-        @Override
-        public Unit getUnitById(int unitID) {
-                Session session = this.sessionFactory.getObject().getCurrentSession();
-                CriteriaBuilder builder = session.getCriteriaBuilder();
-                CriteriaQuery query = builder.createQuery(Unit.class);
-                Root root = query.from(Unit.class);
+    @Override
+    public Unit getUnitById(int unitID) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(Unit.class);
+        Root root = query.from(Unit.class);
 
-                query.where(builder.equal(root.get("id"), unitID));
+        query.where(builder.equal(root.get("id"), unitID));
 
-                Query q = session.createQuery(query);
+        Query q = session.createQuery(query);
 
-                return (Unit) q.getSingleResult();
+        return (Unit) q.getSingleResult();
 
-        }
+    }
 
-        @Override
-        public List<Unit> getUnits() {
-                Session session = this.sessionFactory.getObject().getCurrentSession();
-                CriteriaBuilder builder = session.getCriteriaBuilder();
-                CriteriaQuery query = builder.createQuery(Unit.class);
-                Root root = query.from(Unit.class);
+    @Override
+    public List<Unit> getUnits() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(Unit.class);
+        Root root = query.from(Unit.class);
 
-                query.select(root);
+        query.select(root);
 
-                Query q = session.createQuery(query);
+        Query q = session.createQuery(query);
 
-                return q.getResultList();
-        }
+        return q.getResultList();
+    }
 
     @Override
     public boolean deleteUnit(int id) {

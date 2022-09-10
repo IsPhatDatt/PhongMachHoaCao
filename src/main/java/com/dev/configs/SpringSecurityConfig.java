@@ -54,8 +54,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 http.exceptionHandling().accessDeniedPage("/login?accessDenied"); //Khi no khong co quyen
 
                 http.authorizeRequests().antMatchers("/").permitAll()
-                        .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                        .antMatchers("/admin/**").access("hasRole('ROLE_SUPERADMIN')")
+                        .antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERADMIN')")
                         .antMatchers("/nurse/**").access("hasRole('ROLE_NURSE')")
                         .antMatchers("/doctor/**").access("hasRole('ROLE_DOCTOR')")
                         .antMatchers("/super-admin/**").access("hasRole('ROLE_SUPERADMIN')");

@@ -274,4 +274,11 @@ public class AdminController {
         return "users";
 
     }
+    
+    @GetMapping("/users/{userId}")
+    public String getUserDetail(Model model, @PathVariable(value = "userId") int id) {
+        model.addAttribute("user", this.userDetailsService.getUser(id));
+        model.addAttribute("roles", this.userRoleService.getUserRoleNotRole("ROLE_SUPERADMIN"));
+        return "user-detail";
+    }
 }

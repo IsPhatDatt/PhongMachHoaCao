@@ -106,4 +106,58 @@ public class UserRepositoryImpl implements UserRepository {
             return false;
         }
     }
+    
+    @Override
+    public void updateUser(User user, int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            User u = session.get(User.class, id);
+            if (user.getLastName() != null) {
+                u.setLastName(user.getLastName());
+            }
+            if (user.getFirstName() != null) {
+                u.setFirstName(user.getFirstName());
+            }
+            if (user.getPhoneNumber() != null) {
+                u.setPhoneNumber(user.getPhoneNumber());
+            }
+            if (user.getDateOfBirth() != null) {
+                u.setDateOfBirth(user.getDateOfBirth());
+            }
+            if (user.getSex() != null) {
+                u.setSex(user.getSex());
+            }
+            if (user.getIdentifier() != null) {
+                u.setIdentifier(user.getIdentifier());
+            }
+            if (user.getUsername() != null) {
+                u.setUsername(user.getUsername());
+            }
+            if (user.getPassword() != null) {
+                u.setPassword(user.getPassword());
+            }
+            if (user.getActive() != null) {
+                u.setActive(user.getActive());
+            }
+            if (user.getCreatedDate() != null) {
+                u.setCreatedDate(user.getCreatedDate());
+            }
+            if (user.getAvatar() != null) {
+                u.setAvatar(user.getAvatar());
+            }
+            if (user.getEmail() != null) {
+                u.setEmail(user.getEmail());
+            }
+            if (user.getEmail() != null) {
+                u.setEmail(user.getEmail());
+            }
+            if (user.getUserRoleId() != null) {
+                u.setUserRoleId(user.getUserRoleId());
+            }
+
+            session.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

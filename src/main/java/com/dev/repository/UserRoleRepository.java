@@ -16,4 +16,6 @@ public interface UserRoleRepository {
         UserRole getUserRole(int userRoleID);
         
         List<UserRole> getUserRoleNotRole(String roleName);
+        
+        List<UserRole> getUserRoles();
 }
